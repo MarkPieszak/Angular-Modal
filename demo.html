@@ -1,0 +1,69 @@
+<html>
+<head>
+
+	<style type="text/css">
+
+		table.ev-table { }
+		table.ev-table tr th { background:#f1f1f1; padding:10px; border-bottom:2px #888 solid; }
+		table.ev-table tr td { padding:10px; border-bottom:1px #f1f1f1 solid;}
+
+		.ev-paging { overflow:hidden; }
+		.ev-paging li { float:left; background:#5279a4; color:#fff; padding:10px; margin:1px; }
+		.ev-paging li.ev-current-page { background:#fff; color:#5279a4; }
+	</style>
+
+</head>
+
+<body>
+
+	<div ng-app="app">
+
+		<div ng-controller="DemoController as vmDemo">
+
+
+			<!-- ev-table -->
+
+			<table ev-table="vmDemo.tableData">
+				<thead>
+					<tr>
+						<th ev-sort="Name">CancerName</th>
+						<th ev-sort="Guid">CancerGuid</th>
+					</tr>
+				</thead>
+				<!-- "collection" is required - data is passed to it -->
+				<tr ng-repeat="item in collection">
+					<td>{{ item.Name }}</td>
+					<td>{{ item.Guid }}</td>
+				</tr>
+			</table>
+
+
+
+		</div>
+
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js"></script>
+
+	<script src="mpModal.directive.js"></script>
+
+	<script>
+		'use strict';
+
+		var APP = angular.module('app', ['mpModal']);
+
+		APP.controller('DemoController', function () {
+
+		});
+
+	</script>
+
+</body>
+</html>
