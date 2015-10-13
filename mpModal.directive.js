@@ -8,32 +8,6 @@ module.factory('mpModalService', function () {
 
 module.directive('mpModalBase', function () {
 	return {
-		/*
-		template : function (elem, attrs) {
-			return '<div class="mp-overlay">\
-				<div ng-include="' + attrs.mpModalBase + '"></div>\
-				</div>';*/
-		controller: function ($scope, $element) {
-			console.log('CONTROLLER');
-
-			var vm = $scope.vmModal;			
-
-			//$scope.vmModal.confirm = function () { alert('controller'); };
-
-			vm.confirm = function () { 
-
-				$element.remove();
-			};
-
-			vm.cancel = function () { 
-
-				$element.remove();
-			};
-
-			console.log($scope);
-			
-		},
-		controllerAs: 'vmModal',
 		template: '{{ vmModal |json }}<div class="mp-overlay">\
 			<div class="mp-dialog">\
 			<div class="mp-title"><h3>{{ vmModal.title }}</h3></div>\
@@ -44,22 +18,42 @@ module.directive('mpModalBase', function () {
        		</div>\
        		</div>\
        		</div>',
-		link: function($scope, $element, $attrs) {
-
-			var vm = $scope.vmModal;
-
-           	vm.contentUrl = $attrs.mpModalBase;
-           	vm.title = $attrs.title !== undefined ? $attrs.title : 'Modal Title';
-
-       		$attrs.$observe('mpModalBase', function (newUrl) {
-           		$scope.vmModal.contentUrl = newUrl;
-           	});
-
-           	//vm.confirm = function () { alert('confirmed'); }
-           	
-       	}
-       	
+       		
+		controllerAs: 'vmModal',
+		controller: controllerFunction,
+		link: linkFunction
 	};
+
+	function controllerFunction ($scope, $element) {
+		console.log('CONTROLLER');
+		var vm = $scope.vmModal;			
+
+		vm.confirm = function () { 
+
+			$element.remove();
+		};
+
+		vm.cancel = function () { 
+
+			$element.remove();
+		};		
+	}
+
+	function linkFunction ($scope, $element, $attrs) {
+
+		var vm = $scope.vmModal;
+
+       	vm.contentUrl = $attrs.mpModalBase;
+       	vm.title = $attrs.title !== undefined ? $attrs.title : 'Modal Title';
+
+   		$attrs.$observe('mpModalBase', function (newUrl) {
+       		$scope.vmModal.contentUrl = newUrl;
+       	});
+
+       	//vm.confirm = function () { alert('confirmed'); }
+       	
+   	}
+
 });
 
 module.directive('mpModal', function ($http, $templateCache, $compile) {
