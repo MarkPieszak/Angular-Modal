@@ -2,14 +2,15 @@
 <head>
 
 	<style type="text/css">
+		* { padding:0; margin:0; }
+		div.mp-overlay { background: rgba(0, 0, 0, 0.75); position:absolute; top:0; left:0; width:100%; height:100%; }
+		div.mp-dialog { width:500px; position:relative; top:10%; margin:0 auto; min-height:200px; background:#fff; padding:5px; }
+		div.mp-dialog .mp-title { background:#5279a4; padding:10px; color:#fff; border-bottom:5px #3A5B80 solid; }
+		div.mp-dialog .mp-content { padding:15px 10px; }
+		div.mp-dialog .mp-footer { position:absolute; bottom:5px; width:98%; border-top:3px #888 solid; padding:10px 0; text-align:right; }
+		div.mp-dialog .mp-footer button { background:#5279a4; padding:10px; border:0; color:#fff; }
+		div.mp-dialog .mp-footer button.cancel { background:#ccc; color:#242424; }
 
-		table.ev-table { }
-		table.ev-table tr th { background:#f1f1f1; padding:10px; border-bottom:2px #888 solid; }
-		table.ev-table tr td { padding:10px; border-bottom:1px #f1f1f1 solid;}
-
-		.ev-paging { overflow:hidden; }
-		.ev-paging li { float:left; background:#5279a4; color:#fff; padding:10px; margin:1px; }
-		.ev-paging li.ev-current-page { background:#fff; color:#5279a4; }
 	</style>
 
 </head>
@@ -20,26 +21,10 @@
 
 		<div ng-controller="DemoController as vmDemo">
 
-
-			<!-- ev-table -->
-
-			<table ev-table="vmDemo.tableData">
-				<thead>
-					<tr>
-						<th ev-sort="Name">CancerName</th>
-						<th ev-sort="Guid">CancerGuid</th>
-					</tr>
-				</thead>
-				<!-- "collection" is required - data is passed to it -->
-				<tr ng-repeat="item in collection">
-					<td>{{ item.Name }}</td>
-					<td>{{ item.Guid }}</td>
-				</tr>
-			</table>
-
-
+			<a mp-modal="example1.html" title="Testing" template-url="modal-example.html">Open Modal</a>
 
 		</div>
+
 
 	</div>
 
@@ -60,6 +45,8 @@
 		var APP = angular.module('app', ['mpModal']);
 
 		APP.controller('DemoController', function () {
+			var vm = this;
+
 
 		});
 
