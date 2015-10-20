@@ -11,6 +11,7 @@
  - Then run: `http-server C:\YourDirectory\WheretheAppIs\`
 
 ### To do:
+ - Make different kinds / confirmation / etc
  - Ensure modal in modal is functioning
  - Fix scope issues
  - Styles
