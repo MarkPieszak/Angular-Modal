@@ -1,4 +1,4 @@
-# Angular-Modal
+# Angular 1.*  Modal
 
 # Easy to use Angular Modal / Popup with no dependencies
 
