@@ -2,7 +2,7 @@
 
 # Easy to use Angular Modal / Popup with no dependencies
 
-> Work in progress - Working basic version available
+> Work in progress - Alpha version
 
 ### Demo
 
